@@ -36,6 +36,8 @@ style="margin: auto; background-color: #f8f8f8; border-radius: 6px; box-shaddow:
       <% end %>
     </div>
 
+    <%= form.text_field :user_id, type:"hidden", value: current_user.id %>
+
     <div>
       <%= form.file_field :images, multiple: true %>
     </div>
