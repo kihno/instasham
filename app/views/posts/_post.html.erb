@@ -1,7 +1,8 @@
-<div id="<%= dom_id post %>" class="post-container">
-  <p>
-    <%= post.title %>
-  </p>
+<div id="<%= dom_id post %>" class="text-center col-6 post-container" style="margin: auto">
+  <div>
+    <%= image_tag current_user.avatar, style:"width: 30px; height: 30px" %>
+    <%= link_to post.user.username, post.user %>
+  </div>
 
   <% post.images.each do |image| %>
     <%= image_tag(image, style: "object-fit: contain; width: 200px; height: 200px;") %>
