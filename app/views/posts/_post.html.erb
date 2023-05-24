@@ -1,6 +1,6 @@
 <div id="<%= dom_id post %>" class="text-center col-6 post-container" style="margin: auto">
   <div>
-    <%= image_tag current_user.avatar, style:"width: 30px; height: 30px" %>
+    <%= image_tag post.user.avatar, style:"width: 30px; height: 30px" %>
     <%= link_to post.user.username, post.user %>
   </div>
 
@@ -8,15 +8,13 @@
     <%= image_tag(image, style: "object-fit: contain; width: 200px; height: 200px;") %>
   <% end %>
 
-  <p>
+  <div style="position: relative">
+    <%= link_to "", post, class: "post-link" %>
     <%= post.description %>
-  </p>
+  </div>
 
-  <p>
-    <%= post.keywords %>
-  </p>
-
-  <p>
-   <%= link_to "", post, class: "post-link" %>
-  </p>
+  <div>
+    <%= render partial: "likes/button", locals: { likeable: post } %>
+    <%= post.likes.count %>
+  </div>
 </div>

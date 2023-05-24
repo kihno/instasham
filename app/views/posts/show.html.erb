@@ -3,8 +3,9 @@
 <%= render @post %>
 
 <%= render "comments/form", comment: @comment %>
+
 <% @post.comments.each do |comment| %>
-  <p><%= comment.text %></p>
+  <%= comment.user.username %>
 <% end %>
 
 <div>
