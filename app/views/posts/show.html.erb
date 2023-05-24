@@ -2,10 +2,12 @@
 
 <%= render @post %>
 
-<%= render "comments/form", comment: @comment %>
+<%= render "comments/form" %>
 
 <% @post.comments.each do |comment| %>
-  <%= comment.user.username %>
+  <% if !comment.id.nil? %>
+    <%= render partial: "comments/comment", locals: { comment: comment } %>
+  <% end %>
 <% end %>
 
 <div>

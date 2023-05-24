@@ -1,12 +1,13 @@
 <div id="<%= dom_id comment %>">
   <div>
-    <%= comment.user %>
+    <%= comment.user.try(:username) %>
   </div>
 
   <div>
     <%= comment.text %>
   </div>
   
-  <%= render partial: "likes/button", locals: {likeable: comment } %>
+  <%= render partial: "likes/button", locals: { likeable: comment } %>
+  <p><%= comment.likes.count %></p>
 
 </div>
