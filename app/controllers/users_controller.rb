@@ -21,10 +21,12 @@ class UsersController < ApplicationController
 
   def search
     if params[:search].blank?
-      @results = User.all
+      @userResults = User.all
+      @postResults = Post.all
     else
       @parameter = params[:search].downcase
-      @results = User.all.where("lower(username) LIKE :search", search: "%#{@parameter}%")
+      @userResults = User.all.where("lower(username) LIKE :search", search: "%#{@parameter}%")
+      @postResults = Post.where("lower(description) LIKE :search", search: "%#{@parameter}%").order(created_at: :desc)
     end
   end
 end

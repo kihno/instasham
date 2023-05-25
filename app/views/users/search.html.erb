@@ -1,5 +1,22 @@
-<h3>Search Results</h3>
+<h3>Search Results of Users</h3>
 
-<% @results.each do |result| %>
-  <%= link_to result.username, user_path(result) %>
+<% if @userResults.empty? %>
+  <p>Sorry, couldn't find what you were looking for.</p>
+<% else %>
+  <% @userResults.each do |user| %>
+    <div>
+      <%= image_tag user.avatar, style:"width: 30px; height: 30px" %>
+      <%= link_to user.username, user_path(user) %>
+    </div>
+  <% end %>
+<% end %>
+
+<h3>Search Results of Posts</h3>
+
+<% if @postResults.empty? %>
+  <p>Sorry, couldn't find what you were looking for.</p>
+<% else %>
+  <% @postResults.each do |post| %>
+    <%= render post %>
+  <% end %>
 <% end %>
