@@ -1,0 +1,9 @@
+<h1>Following</h1>
+
+<% if @user.following.empty? %>
+  <p>This user isn't following anyone yet.</p>
+<% else %>
+  <% @user.following.each do |followee| %>
+    <p><%= link_to followee.username, user_path(followee) %></p>
+  <% end %>
+<% end %>
