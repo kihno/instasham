@@ -14,9 +14,10 @@ Rails.application.routes.draw do
 
   resources :users, only: [ :show ]
 
-  resources :posts
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  post '/users/:id/follow', to: "users#follow", as: "follow_user"
+  post '/users/:id/unfollow', to: "users#unfollow", as: "unfollow_user"
 
-  # Defines the root path route ("/")
+  resources :posts
+
   root "posts#index"
 end
